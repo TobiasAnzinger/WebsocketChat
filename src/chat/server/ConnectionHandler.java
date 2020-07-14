@@ -1,6 +1,7 @@
 package chat.server;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -10,7 +11,7 @@ import java.util.Date;
 public class ConnectionHandler implements Runnable {
 
     Socket client;
-
+    String lastMessageTimestamp;
 
     public ConnectionHandler(Socket client) {
         this.client = client;
@@ -42,20 +43,22 @@ public class ConnectionHandler implements Runnable {
             String cache = getNewMessages();
 
 
-            while ((cache = receive.readLine()) != null) {
-
-                if(!receive.readLine().equals("")){
-                System.out.println(receive.readLine());
-                }
-                cache =  "\n" + getTime() + "  " + cache;
+            while (true) {
+                cache = printReceivedMessage(receive);
                 send.println(cache);
                 send.flush();
-//                System.out.println(cache);
-            }
-
-        } catch (Exception e) {
-
+                }
+            } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+    private String printReceivedMessage(BufferedReader receive) throws IOException {
+        String cache;
+        cache = receive.readLine();
+        cache =  getTime() + "  " + cache;
+        System.out.println(cache);
+        return cache;
     }
 
     String getNewMessages(){

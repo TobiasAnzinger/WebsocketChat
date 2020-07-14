@@ -10,14 +10,7 @@ public class Client {
 
     public static void main(String[] args) {
 
-        //Socket verfügbar machen:
         Socket server = null;
-
-//        ClientSetup setup = new ClientSetup();
-//            server = new Socket(setup.getSERVER_ADDRESS(), setup.getSERVER_PORT());
-//        Runnable messageReceiver = new MessageReceiver(server);
-//        new Thread(messageReceiver).start();
-
 
         try {
             ClientSetup setup = new ClientSetup();

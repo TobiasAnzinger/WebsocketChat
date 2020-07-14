@@ -26,41 +26,7 @@ public class ServerSocket {
 
             Runnable connectionHandler = new ConnectionHandler(client);
             new Thread(connectionHandler).start();
-
-
-//            String clientAddress;
-//            clientAddress = client.getInetAddress().getHostAddress() + client.getInetAddress().getHostName();
-//            System.out.println(clientAddress);
-//
-//            try {
-//                BufferedReader rein = new BufferedReader(new InputStreamReader(client.getInputStream()));
-//
-//                PrintWriter senden = new PrintWriter(client.getOutputStream());
-//                /**
-//                 * Diese Endlosschleife ist dazu da jede anfrage der Clients anzunemen und zurück zu senden.
-//                 * Eine Empfangene Nachricht wird in den Zwischenspeicher gelegt.
-//                 * Anschliessend wird dieser String mit dem Wort "Antwort versehen" und zurück gesendet.
-//                 */
-//                String cache;
-//                while ((cache = rein.readLine()) != null) {
-//                    cache = getTime() + "  " + cache;
-//                    senden.println(cache);
-//                    senden.flush();
-//                    System.out.println(cache);
-//                }
-//
-//            } catch (Exception e) {
-//
-//            }
         }
-
-    }
-
-    String getTime() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-        return formatter.format(date);
-
     }
 
     public String printIPAddress() throws SocketException {

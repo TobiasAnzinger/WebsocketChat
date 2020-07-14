@@ -7,7 +7,6 @@ import java.net.Socket;
 
 public class Client {
 
-
     public static void main(String[] args) {
 
         Socket server = null;
@@ -16,6 +15,7 @@ public class Client {
             ClientSetup setup = new ClientSetup();
             setup.init();
             server = new Socket(setup.getSERVER_ADDRESS(), setup.getSERVER_PORT());
+
             Runnable messageReceiver = new MessageReceiver(server);
             new Thread(messageReceiver).start();
 

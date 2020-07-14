@@ -11,7 +11,6 @@ public class ClientSetup {
     int SERVER_PORT;
     String name;
 
-
     public String getSERVER_ADDRESS() {
         return SERVER_ADDRESS;
     }
@@ -36,13 +35,10 @@ public class ClientSetup {
         this.name = name;
     }
 
-
     void init() {
         enterServerAddress();
         enterUserName();
         try { TimeUnit.SECONDS.sleep(2); } catch(InterruptedException ex) {}
-
-//        clearScreen();
     }
 
     public void enterUserName() {

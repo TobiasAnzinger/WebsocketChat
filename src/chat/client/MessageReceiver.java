@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class MessageReceiver implements Runnable{
+public class MessageReceiver implements Runnable {
 
     Socket server;
 
@@ -22,9 +22,7 @@ public class MessageReceiver implements Runnable{
 
             while (true) {
                 try {
-                    if ((receive.readLine() != null)) {
-                        System.out.println(receive.readLine());
-                    }
+                    System.out.println(receive.readLine());
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
